@@ -35,7 +35,7 @@ class Post
       doc = self.fetch(@@url)
     else
       doc = self.fetch(@@url+id+'.html')
-      
+
       id_int = id.sub('ap','').to_i
       next_id = id_int+1;
       previous_id = id_int-1;
@@ -47,13 +47,15 @@ class Post
     image = doc.css('img')[0].values[0]
     title = doc.css('center')[1].children.css('b')[0].text
     children = doc.css('center')[2].children
+    text = doc.css('p')[2].text.sub('Explanation: ','')
+
     children.css('a').each do |a|
       if a.text.include? '<'
         id = a.values[0].sub('.html','')
       end
     end
 
-    {:title => title, :image => @@url+image, :id => id, :next => 'ap'+next_id.to_s, :previous => 'ap'+previous_id.to_s}
+    {:title => title, :image => @@url+image, :text => text, :id => id, :next => 'ap'+next_id.to_s, :previous => 'ap'+previous_id.to_s}
   end
 
 end

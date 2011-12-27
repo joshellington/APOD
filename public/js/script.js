@@ -17,25 +17,37 @@ $(function() {
 
 function get(id) {
   var img = $('#image').find('img'),
-      title = $('h2'),
+      cont = $('#image'),
+      title = $('#image h2'),
+      text = $('#image p'),
       next_obj = $('.next'),
-      prev_obj = $('.previous');
+      prev_obj = $('.previous'),
+      loader = $('#loader');
 
-  $.getJSON(path+'/'+id, function(d) {
-    if ( d ) {
-      img.attr('src', d.image);
-      title.text(d.title);
+  cont.fadeOut(300, function() {
+    loader.show(0); 
 
-      if ( $('.next').length == 0 ) {
-        $('#links').append('<a href="#" data-id="'+d['next']+'" class="next">next</a>');
+    $.getJSON(path+'/'+id, function(d) {
+      if ( d ) {
+        img.attr('src', d.image);
+        title.text(d.title);
+        text.text(d.text);
+
+        if ( next_obj.length == 0 ) {
+          $('#links').append('<a href="#" data-id="'+d['next']+'" class="next">next</a>');
+        }
+
+        prev_obj.data('id', d['previous']);
+        next_obj.data('id', d['next']);
+
+        loader.fadeOut(300, function() {
+          cont.fadeIn(300);
+        });
+      } else {
+        alert('sorry, no image here!');
       }
-
-      prev_obj.data('id', d['previous']);
-      next_obj.data('id', d['next']);
-    } else {
-      alert('sorry, no image here!');
-    }
-    console.log(d);
+      console.log(d);
+    });
   });
 }
 

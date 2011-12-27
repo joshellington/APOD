@@ -1,8 +1,10 @@
-<div id="links">
-  <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a>
-</div>
+<div id="loader" style="display:none;"><img src="<%= @path %>/img/loader.gif"></div>
 
 <div id="image">
   <h2><%= @post[:title] %></h2>
+  <div id="links">
+    <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a>
+  </div>
   <img src="<%= @post[:image] %>">
+  <p><%= @post[:text] %></p>
 </div>

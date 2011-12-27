@@ -213,17 +213,43 @@ body {
   font-family:'Helvetica Neue';
 }
 
+#wrapper {
+  padding:25px;
+}
+
 a, a:visited, a:hover {
   color:#aaa;
   text-decoration:none;
 }
 
+h1 {
+  color:#fff;
+  font-size:18px;
+  font-weight:100;
+  margin:0;
+  padding:0;
+  text-align:center;
+  padding:10px;
+  border-bottom:1px solid #fff;
+}
+
 h2 {
   color:#fff;
   font-size:48px;
-  font-weight:300;
+  font-weight:100;
   padding:25px 0;
   margin:0;
+}
+
+p {
+  color:#fff;
+  font-size:16px;
+  font-weight:100;
+  padding:25px 0;
+  margin:0 auto;
+  max-width:600px;
+  text-align:left;
+  line-height:1.6;
 }
 
 #image {
@@ -236,19 +262,28 @@ h2 {
   }
 
 #links {
-  font-size:18px;
+  font-size:14px;
   text-align:center;
-  padding:25px 0;
+  padding:0 0 25px 0;
+  letter-spacing:1px;
 }
 
   #links a {
-    font-weight:300;
+    font-weight:100;
     padding:0 10px;
   }
 
+#loader {
+  text-align:center;
+}
 
 
 
+#footer p {
+  padding:25px 0 0;
+  font-size:13px;
+  text-align:center;
+}
 
 
 
