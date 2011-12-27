@@ -210,7 +210,7 @@ td { vertical-align: top; }
 
 body {
   background:#000;
-  font-family:'Helvetica Neue';
+  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #wrapper {
