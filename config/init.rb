@@ -47,8 +47,12 @@ class Post
   # end
 
   def self.random latest
-    date1 = Date.strptime("950616", "%g%m%d").to_time
+    date1 = Date.strptime("1995, 06, 16", "%Y, %m, %d").to_time
     date2 = Date.strptime(latest.to_s, "%g%m%d").to_time
+    puts '---------'
+    puts date1
+    puts date2
+    puts '---------'
     t = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f).to_time
     'ap'+t.strftime("%g%m%d")
   end
@@ -62,9 +66,6 @@ class Post
       id_int = id.sub('ap','').to_i
       next_id = id_int+1;
       previous_id = id_int-1;
-
-      puts next_id
-      puts previous_id
     end
 
     random = self.random(latest)
@@ -72,7 +73,11 @@ class Post
     title = doc.css('center')[1].children.css('b')[0].text
     date = doc.css('center')[0].children.css('p')[1].text
     link = doc.css('center')[0].children.css('a')[1].values[0]
-    children = doc.css('center')[2].children
+    begin
+      children = doc.css('center')[2].children
+    rescue
+      children = doc.css('center')[1].children
+    end
     text = doc.css('p')[2].text.sub('Explanation: ','')
 
     children.css('a').each do |a|

@@ -29,8 +29,8 @@ $(function() {
 });
 
 function random() {
-  $.getJSON(path+'/random?latest='+latest_id, function(d) {
-    $('.random').data('id', d.id).show();
+  $.get(path+'/random?latest='+latest_id, function(d) {
+    location.hash = d;
     log(d);
   });
 }
@@ -70,7 +70,7 @@ function get(id) {
           cont.fadeIn(300);
         });
       } else {
-        alert('sorry, no image here!');
+        alert('Sorry, no image here!');
       }
       log(d);
     });

@@ -20,7 +20,7 @@ match '/' do
 end
 
 match '/random/?' do
-  Post.random(params[:latest]).to_json
+  Post.random(params[:latest])
 end
 
 match '/:id/?' do
