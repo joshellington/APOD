@@ -6,6 +6,6 @@
   <div id="links">
     <a href="#" data-id="<%= @post[:random] %>" class="random">random</a> <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a>
   </div>
-  <img src="<%= @post[:image] %>">
+  <a href="<%= @@url+@post[:link] %>" class="big" target="_blank"><img src="<%= @post[:image] %>"></a>
   <p><%= @post[:text] %></p>
 </div>

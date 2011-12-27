@@ -71,6 +71,7 @@ class Post
     image = doc.css('img')[0].values[0]
     title = doc.css('center')[1].children.css('b')[0].text
     date = doc.css('center')[0].children.css('p')[1].text
+    link = doc.css('center')[0].children.css('a')[1].values[0]
     children = doc.css('center')[2].children
     text = doc.css('p')[2].text.sub('Explanation: ','')
 
@@ -83,6 +84,7 @@ class Post
     {
       :title => title,
       :image => @@url+image,
+      :link => link,
       :text => text,
       :date => date,
       :id => id,

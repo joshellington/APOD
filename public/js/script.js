@@ -1,5 +1,6 @@
 
-var latest_id = parseInt(latest.replace('ap',''));
+var latest_id = parseInt(latest.replace('ap','')),
+    full_url = 'http://apod.nasa.gov/apod/';
 
 $(function() {
     
@@ -40,6 +41,7 @@ function get(id) {
       title = $('#image h2'),
       text = $('#image p'),
       date = $('#image h3'),
+      big = $('#image a.big'),
       rand_obj = $('.random'),
       next_obj = $('.next'),
       prev_obj = $('.previous'),
@@ -62,6 +64,7 @@ function get(id) {
         rand_obj.data('id', d['random']);
         prev_obj.data('id', d['previous']);
         next_obj.data('id', d['next']);
+        big.attr('href', full_url+d['link']);
 
         loader.fadeOut(300, function() {
           cont.fadeIn(300);
