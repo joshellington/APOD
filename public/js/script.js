@@ -46,7 +46,7 @@ function get(id) {
       } else {
         alert('sorry, no image here!');
       }
-      console.log(d);
+      // console.log(d);
     });
   });
 }
