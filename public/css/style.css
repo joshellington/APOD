@@ -271,10 +271,10 @@ p {
   font-size:14px;
   text-align:center;
   padding:0 0 25px 0;
+  font-weight:100;
 }
 
   #links a {
-    font-weight:100;
     padding:0 10px;
   }
 

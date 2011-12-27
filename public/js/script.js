@@ -42,9 +42,9 @@ function get(id) {
       text = $('#image p'),
       date = $('#image h3'),
       big = $('#image a.big'),
-      rand_obj = $('.random'),
-      next_obj = $('.next'),
-      prev_obj = $('.previous'),
+      rand_obj = $('#links .random'),
+      next_obj = $('#links .next'),
+      prev_obj = $('#links .previous'),
       loader = $('#loader');
 
   cont.fadeOut(300, function() {
@@ -57,14 +57,12 @@ function get(id) {
         text.text(d.text);
         date.text(d.date);
 
-        if ( next_obj.length == 0 ) {
-          $('#links').append('<a href="#" data-id="'+d['next']+'" class="next">next</a>');
-        }
-
         rand_obj.data('id', d['random']);
         prev_obj.data('id', d['previous']);
         next_obj.data('id', d['next']);
         big.attr('href', full_url+d['link']);
+
+        next_obj.show();
 
         loader.fadeOut(300, function() {
           cont.fadeIn(300);

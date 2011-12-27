@@ -60,10 +60,10 @@ class Post
       doc = self.fetch(@@url+id+'.html')
 
       id_new = id.sub('ap','')
-      time_new = Date.strptime(id_new, "%y%m%d").to_time
+      time_new = DateTime.strptime(id_new, "%y%m%d").to_time
 
-      next_id = (time_new + 1).strftime("%y%m%d")
-      previous_id = (time_new - 1).strftime("%y%m%d")
+      next_id = (time_new + 172800).strftime("%y%m%d")
+      previous_id = (time_new - 43200).strftime("%y%m%d")
     end
 
     random = self.random(latest)
