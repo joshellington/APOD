@@ -214,7 +214,7 @@ body {
 }
 
 #wrapper {
-  padding:25px;
+  padding:25px 0;
 }
 
 a, a:visited, a:hover {
@@ -237,7 +237,7 @@ h2 {
   color:#fff;
   font-size:48px;
   font-weight:100;
-  padding:25px 0;
+  padding:25px;
   margin:0;
 }
 
@@ -245,7 +245,7 @@ p {
   color:#fff;
   font-size:16px;
   font-weight:100;
-  padding:25px 0;
+  padding:25px;
   margin:0 auto;
   max-width:600px;
   text-align:left;
@@ -257,7 +257,6 @@ p {
 }
 
   #image img {
-    max-height:100%;
     max-width:100%;
   }
 
@@ -265,7 +264,6 @@ p {
   font-size:14px;
   text-align:center;
   padding:0 0 25px 0;
-  letter-spacing:1px;
 }
 
   #links a {
@@ -296,6 +294,25 @@ p {
    These override the primary ('mobile first') styles
    Modify as content requires.
    ========================================================================== */
+
+@media only screen and (max-width: 480px) {
+  h2 {
+    font-size:24px;
+  }
+
+  p {
+    font-size:13px;
+  }
+
+  #footer p {
+    font-size:11px;
+  }
+
+  #wrapper {
+    padding:15px 0;
+  }
+
+}
 
 @media only screen and (min-width: 480px) {
   /* Style adjustments for viewports 480px and over go here */
