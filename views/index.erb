@@ -1,9 +1,10 @@
 <div id="loader" style="display:none;"><img src="<%= @path %>/img/loader.gif"></div>
 
 <div id="image">
+  <h3><%= @post[:date] %></h3>
   <h2><%= @post[:title] %></h2>
   <div id="links">
-    <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a>
+    <a href="#" data-id="<%= @post[:random] %>" class="random">random</a> <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a>
   </div>
   <img src="<%= @post[:image] %>">
   <p><%= @post[:text] %></p>

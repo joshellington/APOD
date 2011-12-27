@@ -1,6 +1,8 @@
 require 'nokogiri'   
 require 'open-uri'
 require 'json'
+require 'date'
+require 'time'
 
 def base_uri
   base_uri_raw = request.env["HTTP_HOST"]+request.env["SCRIPT_NAME"]
@@ -20,6 +22,7 @@ end
 #
 
 @@url = 'http://apod.nasa.gov/apod/'
+@@date = Time.now.strftime("%g%m%d")
 
 class Post
 
@@ -30,7 +33,27 @@ class Post
     doc = Nokogiri::HTML(open(url))
   end
 
-  def self.get id = nil
+  # def self.random
+  #   doc = self.fetch('http://apod.nasa.gov/apod/archivepix.html')
+  #   a = doc.css('b')[0].children.css('a')
+  #   ids = []
+  #   a.each do |l|
+  #     puts l.values[0]
+  #     ids.push(l.values[0].sub('.html',''))
+  #   end
+  #   ids
+  #   # id = a[rand(a.size)].values[0].sub('.html','')
+  #   # self.get(id)
+  # end
+
+  def self.random latest
+    date1 = Date.strptime("950616", "%g%m%d").to_time
+    date2 = Date.strptime(latest.to_s, "%g%m%d").to_time
+    t = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f).to_time
+    'ap'+t.strftime("%g%m%d")
+  end
+
+  def self.get id = nil, latest = @@date
     if id.nil?
       doc = self.fetch(@@url)
     else
@@ -44,8 +67,10 @@ class Post
       puts previous_id
     end
 
+    random = self.random(latest)
     image = doc.css('img')[0].values[0]
     title = doc.css('center')[1].children.css('b')[0].text
+    date = doc.css('center')[0].children.css('p')[1].text
     children = doc.css('center')[2].children
     text = doc.css('p')[2].text.sub('Explanation: ','')
 
@@ -55,7 +80,16 @@ class Post
       end
     end
 
-    {:title => title, :image => @@url+image, :text => text, :id => id, :next => 'ap'+next_id.to_s, :previous => 'ap'+previous_id.to_s}
+    {
+      :title => title,
+      :image => @@url+image,
+      :text => text,
+      :date => date,
+      :id => id,
+      :random => random,
+      :next => 'ap'+next_id.to_s,
+      :previous => 'ap'+previous_id.to_s
+    }
   end
 
 end

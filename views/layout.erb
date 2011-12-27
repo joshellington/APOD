@@ -19,7 +19,7 @@
 </head>
 <body>
 
-  <h1>APOD</h1>
+  <h1><a href="/<%= @path %>">APOD</a></h1>
 
   <div id="wrapper">
 
@@ -33,7 +33,8 @@
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>
-  var path = '<%= @path %>';
+  var path = '<%= @path %>',
+      latest = '<%= @post[:id] %>';
   </script>
   <script src="<%= @path %>/js/script.js"></script>
 

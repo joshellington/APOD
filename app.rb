@@ -18,6 +18,10 @@ match '/' do
   erb :index
 end
 
+match '/random/?' do
+  Post.random(params[:latest]).to_json
+end
+
 match '/:id/?' do
-  Post.get(params[:id]).to_json
+  Post.get(params[:id], params[:latest]).to_json
 end
