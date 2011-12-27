@@ -6,6 +6,7 @@ require './config/init'
 # Before any route is run
 before do
   @path = request.env['SCRIPT_NAME']
+  @url = 'http://apod.nasa.gov/apod/'
 end
 
 #
