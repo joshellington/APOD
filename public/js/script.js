@@ -75,6 +75,8 @@ function get(id) {
       log(d);
     });
   });
+
+  _gaq.push(['_trackEvent', 'load', id]);
 }
 
 

@@ -49,10 +49,6 @@ class Post
   def self.random latest
     date1 = Date.strptime("1995, 06, 16", "%Y, %m, %d").to_time
     date2 = Date.strptime(latest.to_s, "%g%m%d").to_time
-    puts '---------'
-    puts date1
-    puts date2
-    puts '---------'
     t = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f).to_time
     'ap'+t.strftime("%g%m%d")
   end
@@ -63,9 +59,14 @@ class Post
     else
       doc = self.fetch(@@url+id+'.html')
 
-      id_int = id.sub('ap','').to_i
-      next_id = id_int+1;
-      previous_id = id_int-1;
+      id_new = id.sub('ap','')
+      time_new = Date.strptime(id_new, "%y%m%d").to_time
+
+      next_id = (time_new + 1).strftime("%y%m%d")
+      previous_id = (time_new - 1).strftime("%y%m%d")
+
+      puts next_id
+      puts previous_id
     end
 
     random = self.random(latest)
