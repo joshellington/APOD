@@ -64,9 +64,6 @@ class Post
 
       next_id = (time_new + 1).strftime("%y%m%d")
       previous_id = (time_new - 1).strftime("%y%m%d")
-
-      puts next_id
-      puts previous_id
     end
 
     random = self.random(latest)
