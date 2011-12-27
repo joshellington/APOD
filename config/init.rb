@@ -1,3 +1,4 @@
+require 'newrelic_rpm'
 require 'nokogiri'   
 require 'open-uri'
 require 'json'
