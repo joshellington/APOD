@@ -1,4 +1,3 @@
-require 'newrelic_rpm'
 require 'nokogiri'   
 require 'open-uri'
 require 'json'
@@ -90,6 +89,7 @@ class Post
       :image => @@url+image,
       :link => link,
       :text => text,
+      :source => @@url+id+'.html',
       :date => date,
       :id => id,
       :random => random,

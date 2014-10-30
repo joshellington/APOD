@@ -4,8 +4,9 @@
   <h3><%= @post[:date] %></h3>
   <h2><%= @post[:title] %></h2>
   <div id="links">
-    <a href="#" data-id="<%= @post[:random] %>" class="random">random</a> - <a href="#" data-id="<%= @post[:id] %>" class="previous">previous</a> - <a href="#" data-id="" class="next" style="display:none;">next</a>
+    <a href="#" data-id="<%= @post[:id] %>" class="previous">Previous</a> &mdash; <a href="#" data-id="<%= @post[:random] %>" class="random">Random</a> &mdash; <a href="/">Latest</a> <span class="next-slash" style="display:none;">&mdash;</span> <a href="#" data-id="" class="next" style="display:none;">Next</a>
   </div>
   <a href="<%= @url+@post[:link] %>" class="big" target="_blank"><img src="<%= @post[:image] %>"></a>
   <p><%= @post[:text] %></p>
+  <span class="source">Source: <a href="<%= @post[:source] %>"><%= @post[:source] %></a></span>
 </div>

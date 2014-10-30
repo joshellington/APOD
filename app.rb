@@ -15,7 +15,7 @@ end
 match '/' do
   @post = Post.get
   
-  puts @post.inspect
+  # puts @post.inspect
   erb :index
 end
 

@@ -15,18 +15,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   
   <link rel="shortcut icon" href="/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Karla:400,700,400italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="<%= @path %>/css/style.css?v=3">
 </head>
 <body>
 
-  <h1><a href="/<%= @path %>">APOD</a></h1>
+  <!-- <h1><a href="/<%= @path %>">APOD</a></h1> -->
 
   <div id="wrapper">
 
     <%= yield %>
   
     <div id="footer">
-      <p>Thanks to NASA: <a href="http://apod.nasa.gov/apod/">apod.nasa.gov/apod</a>. Source: <a href="https://github.com/joshellington/APOD">Github</a></p>
+      <p>Thanks to NASA: <a href="http://apod.nasa.gov/apod/">apod.nasa.gov/apod</a> &mdash; Built by: <a href="http://joshellington.com">Josh Ellington</a> &mdash; Code: <a href="https://github.com/joshellington/APOD">Github</a></p>
     </div>
 
   </div>

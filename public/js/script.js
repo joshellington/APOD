@@ -40,37 +40,52 @@ function get(id) {
       cont = $('#image'),
       title = $('#image h2'),
       text = $('#image p'),
+      source = $('#image .source a'),
       date = $('#image h3'),
       big = $('#image a.big'),
       rand_obj = $('#links .random'),
       next_obj = $('#links .next'),
+      next_slash = $('#links').find('.next-slash'),
       prev_obj = $('#links .previous'),
       loader = $('#loader');
 
   cont.fadeOut(300, function() {
     loader.show(0); 
 
-    $.getJSON(path+'/'+id+'?latest='+latest_id, function(d) {
-      if ( d ) {
-        img.attr('src', d.image);
-        title.text(d.title);
-        text.text(d.text);
-        date.text(d.date);
+    $.ajax({
+      url: path+'/'+id+'?latest='+latest_id,
+      type: 'GET',
+      dataType: 'json',
+      success: function(d) {
+        if (d) {
+          img.attr('src', d.image);
+          title.text(d.title);
+          text.text(d.text);
+          date.text(d.date);
+          source.text(d.source).attr('href', d.source);
 
-        rand_obj.data('id', d['random']);
-        prev_obj.data('id', d['previous']);
-        next_obj.data('id', d['next']);
-        big.attr('href', full_url+d['link']);
+          rand_obj.data('id', d['random']);
+          prev_obj.data('id', d['previous']);
+          next_obj.data('id', d['next']);
+          big.attr('href', full_url+d['link']);
 
-        next_obj.show();
+          next_obj.show();
+          next_slash.show();
 
-        loader.fadeOut(300, function() {
-          cont.fadeIn(300);
-        });
-      } else {
-        alert('Sorry, no image here!');
+          loader.fadeOut(300, function() {
+            cont.fadeIn(300);
+          });
+        } else {
+          alert('Sorry, no image here!');
+        }
+        log(d);
+      },
+      error: function(d) {
+        $('#wrapper').html('<h1>Sorry, that image is not loading. Redirecting you to the latest in two seconds.</h1>');
+        setTimeout(function() {
+          window.location = '/';
+        }, 2000);
       }
-      log(d);
     });
   });
 
